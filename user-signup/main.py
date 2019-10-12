@@ -6,10 +6,12 @@ app = Flask(__name__)
 #displays runtime errors in the terminal and browser
 app.config['DEBUG'] = True
 
+#original page it opens to
 @app.route("/")
 def signup_form():
     return render_template('signup_form.html')
 
+#refreshes on same page with errors
 @app.route("/", methods=['POST'])
 def validate_signup():
     username = request.form['username']
@@ -54,6 +56,7 @@ def validate_signup():
     else:
         return render_template('signup_form.html', username = username, password = password, verify = verify, email = email, username_error = username_error, password_error = password_error, verify_error = verify_error, email_error = email_error)
 
+#goes to confirmation page if no errors
 @app.route("/confirmation")
 def confirmation_pg():
     username = request.args.get('username')
