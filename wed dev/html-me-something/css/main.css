@@ -8,6 +8,10 @@ h1 {
     font-size: 35pt;
 }
 
+h2 {
+    font-family: 'Yeseva One', cursive;
+}
+
 h3 {
     font-family: 'Comfortaa', cursive;
     font-size: 20pt;
@@ -33,7 +37,7 @@ p {
 .place, .item, .code {
     display: inline-block;
     vertical-align: text-top;
-    max-width: 20%;
+    max-width: 40%;
     margin: 1%;
 }
 
