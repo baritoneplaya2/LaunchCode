@@ -1,0 +1,24 @@
+<!-- build-a-blog -->
+{% extends "base.html" %}
+
+{% block content %}
+    <header>
+        <h1>Build-A-Blog!</h1>
+    </header>
+    <!-- <div>
+        <a href='/logout'>log out</a>
+    </div> -->
+    <section>
+        <form>
+            <label>
+                <h3>NEW BLOG ENTRY!</h3>
+                <input type="text" name="title" placeholder="Title Here" value="{{blogpost_title}}">
+            </label>
+            <span class="error">{{title_error}}</span>
+            <textarea rows="20" cols="70" name="body" placeholder="Blog Entry Here">{{blogbody}}</textarea>
+            <span class="error">{{body_error}}</span>
+            <input type="submit" value="PUBLISH!">
+        </form>
+    </section>
+
+{% endblock %}
