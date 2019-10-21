@@ -1,0 +1,3 @@
+[submodule "flicklist-flask"]
+	path = flicklist-flask
+	url = https://github.com/baritoneplaya2/LaunchCode/
