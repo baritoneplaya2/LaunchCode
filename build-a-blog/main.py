@@ -22,7 +22,7 @@ class BlogPost(db.Model):
         self.body = body
 
 #main
-@app.route('/blog', methods=['GET'])
+@app.route('/blog')
 def index():
     blog_id = str(request.args.get('id'))
     blogs = BlogPost.query.all()
@@ -30,19 +30,20 @@ def index():
 
     return render_template('blog.html', blogs=blogs, myblog=myblog)
 
-@app.route('/newpost', methods=['POST', 'GET'])
-def newpost():
-    if request.method == 'POST':
-        blogpost_title = request.form['title']
-        blogbody = request.form['body']
-        newpost = BlogPost(blogpost_title, blogbody)
-        db.session.add(newpost)
-        db.session.commit()
+@app.route('/newpost', methods=['POST'])
+def newpostadd():
+    blogpost_title = "Enter your title here"
+    blogpost_title = request.form['title']
+    blogbody = request.form['body']
+    
+    mynewpost = BlogPost(blogpost_title, blogbody)
+    db.session.add(mynewpost)
+    db.session.commit()
+    return redirect('/blog')
 
-#curly braces in html form = new variable above
-        return render_template('newpost.html',blogpost_title=blogpost_title, blogbody=blogbody)
-    else:
-        return render_template('newpost.html')
+@app.route('/newpost')
+def newpost():
+    return render_template('newpost.html')
 
 if __name__ == '__main__':
     app.run()

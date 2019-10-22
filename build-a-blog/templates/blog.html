@@ -5,23 +5,23 @@
     <header>
         <h1>Build-A-Blog!</h1>
     </header>
-    <!-- <div>
-        <a href='/logout'>log out</a>
-    </div> -->
+
     <section>
         {% if not myblog %}
         <h2>All of the BLOGS!</h2>
         <ul style="list-style: none;">
             {% for blog in blogs %}
             <li><a href='./blog?id={{blog.id}}'>{{blog.title}}</a>
-            <br>{{blog.body}}
+            <br>{{blog.body}}<br><br>
             </li>
             {% endfor %}
         </ul>
         {% endif %}
         {% if myblog %}
         <h2>{{myblog.title}}</h2>
+        <br>
         <p>{{myblog.body}}</p>
+        <br><br>
         {% endif %}
     </section>
 
