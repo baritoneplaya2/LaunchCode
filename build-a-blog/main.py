@@ -10,6 +10,19 @@ app.config['SQLALCHEMY_ECHO'] = True
 db = SQLAlchemy(app)
 app.secret_key = 'y448kGcys&zP4B'
 
+def title_error(blog_title):
+    if len(blog_title) > 0:
+        return False
+    else:
+        return True
+
+def body_error(blog_body):
+    if len(blog_body) > 0:
+        return False
+    else:
+        return True
+
+
 #create BlogPost table table
 class BlogPost(db.Model):
 
@@ -30,20 +43,30 @@ def index():
 
     return render_template('blog.html', blogs=blogs, myblog=myblog)
 
-@app.route('/newpost', methods=['POST'])
+@app.route('/newpost', methods=['POST', 'GET'])
 def newpostadd():
-    blogpost_title = "Enter your title here"
-    blogpost_title = request.form['title']
-    blogbody = request.form['body']
     
-    mynewpost = BlogPost(blogpost_title, blogbody)
-    db.session.add(mynewpost)
-    db.session.commit()
-    return redirect('/blog')
+    if request.method == 'POST' :
+        blogpost_title = request.form['title']   
+        blogbody = request.form['body']
+        title_error_msg = ''
+        body_error_msg = ''
+        
 
-@app.route('/newpost')
-def newpost():
-    return render_template('newpost.html')
+        if title_error(blogpost_title):
+            title_error_msg = "Please input a title."
+            return render_template('newpost.html', title_error=title_error_msg, body_error=body_error_msg, blogbody=blogbody)
+        if body_error(blogbody):
+            body_error_msg = "Please input blog content."
+            return render_template('newpost.html', title_error=title_error_msg, body_error=body_error_msg, blogpost_title=blogpost_title)
+                   
+        else:
+            mynewpost = BlogPost(blogpost_title, blogbody)
+            db.session.add(mynewpost)
+            db.session.commit()  
+            return redirect('blog/?id=' + str(blog.id)) 
+    else:
+            return render_template('newpost.html') 
 
 if __name__ == '__main__':
     app.run()
