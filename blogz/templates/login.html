@@ -1,0 +1,36 @@
+<!-- BLOGZ -->
+{% extends "base.html" %}
+
+{% block content %}
+<header>
+        <h1>Welcome to Your Personal Blog</h1>
+    </header>
+    <div>
+        <h3>Sign-In</h3>
+        <p>Welcome back! Please sign-in to view your account! <br>If you don't have an account, you can <a href="/register">register</a> for one.</p>
+        <form action="/login" method="post">
+            <table>
+                <tr>
+                    <td>
+                        <label for="username">Username</label>
+                    </td>
+                    <td>
+                        <input name="username" type="username" value="{{ username }}">
+                        <span class="error">{{username_error}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="password">Password</label>
+                    </td>
+                    <td>
+                        <input name="password" type="password" value="{{ password }}">
+                        <span class="error">{{password_error}}</span>
+                    </td>
+                </tr>                
+            </table>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+<!-- BLOGZ -->
+{% extends "base.html" %}
+
+{% block content %}
+    <header>
+        <h1>Your Blog!</h1>
+    </header>
+    <section>
+        {% if not myblog %}
+        <ul style="list-style: none;">
+            {% for blog in blogs %}
+            <li><a href='blog?id={{blog.id}}'>{{blog.title}}</a>
+            <br>{{blog.body}}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% if myblog %}
+        <h2>{{myblog.title}}</h2>
+        <p>{{myblog.body}}</p>
+        {% endif %}
+    </section>
+
+{% endblock %}

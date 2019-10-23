@@ -1,0 +1,21 @@
+<!-- BLOGZ -->
+{% extends "base.html" %}
+
+{% block content %}
+    <header>
+        <h2>Welcome To Your Personal Blog!</h2>
+    </header>
+    <section>
+        <form method="post">
+            <label>
+                <h3>NEW BLOG ENTRY!</h3>
+                <input type="text" name="title" placeholder="Title Here" value="{{blog_title}}">
+            </label>
+            <span class="error">{{title_error}}</span>
+            <textarea rows="20" cols="70" name="body" placeholder="Blog Entry Here">{{blogbody}}</textarea>
+            <span class="error">{{body_error}}</span>
+            <input type="submit" value="PUBLISH!">
+        </form>
+    </section>
+
+{% endblock %}

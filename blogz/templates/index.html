@@ -1,0 +1,19 @@
+<!-- BLOGZ -->
+{% extends "base.html" %}
+
+{% block content %}
+    <header>
+        <h1>Your Blog!</h1>
+    </header>
+    <section>
+        <h2>The wonderful bloggers</h2>
+        <ul style="list-style: none;">
+            {% for user in users %}
+            <li><a href='blog?user={{user.id}}'>{{user.username}}</a>
+            </li>
+            {% endfor %}
+        </ul>
+      
+    </section>
+
+{% endblock %}
