@@ -1,0 +1,15 @@
+package org.launchcode;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class CountingCharacters
+
+    Run | Debug
+public static void main(String[] args) {
+    HashMap<Character, Integer> characterCounts = new HashMap<>();
+    String testSTring = "If the product...";
+    char[] charactersInSTring = testString.toCharArray();
+
+    for
+        }
