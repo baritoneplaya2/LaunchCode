@@ -1,0 +1,29 @@
+### Java template
+# Default ignored files
+/workspace.xml
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BluJ files
+*.ctct
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com
+he_err_pid*
+
+.idea
+*.iml
